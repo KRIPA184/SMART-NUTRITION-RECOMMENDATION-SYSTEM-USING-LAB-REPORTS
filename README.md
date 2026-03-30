@@ -155,6 +155,3 @@ curl -X POST http://localhost:5000/api/analyze \
 - Input validation on all form fields
 - Medical disclaimer displayed on every results page
 
-## Disclaimer
-
-This system is for **informational purposes only** and does NOT constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional.
