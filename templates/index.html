@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Nutrition System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">
+                <i class="bi bi-heart-pulse-fill text-success me-2"></i>Smart Nutrition
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link active" href="/">Home</a>
+                <a class="nav-link" href="/upload">Analyze Report</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center text-white d-flex align-items-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4">
+                <i class="bi bi-clipboard2-pulse me-3"></i>Smart Nutrition<br>Recommendation System
+            </h1>
+            <p class="lead mb-4 mx-auto" style="max-width: 700px;">
+                AI-powered analysis of your lab reports to generate personalized
+                nutrition plans, risk assessments, and actionable health insights.
+            </p>
+            <a href="/upload" class="btn btn-success btn-lg px-5 py-3 fw-bold">
+                <i class="bi bi-upload me-2"></i>Upload Lab Report
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">How It Works</h2>
+            <div class="row g-4">
+                <!-- Phase 1 -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-primary bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width:64px;height:64px;">
+                                <i class="bi bi-file-earmark-medical fs-3"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Phase 1: Data Ingestion</h5>
+                            <p class="card-text text-muted">
+                                Upload your lab report (PDF or image). Our OCR engine extracts
+                                biomarkers like Hemoglobin, Glucose, HbA1c, Cholesterol,
+                                Vitamins, and more with regex-based precision.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Phase 2 -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-warning bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width:64px;height:64px;">
+                                <i class="bi bi-cpu fs-3"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Phase 2: AI/ML Analysis</h5>
+                            <p class="card-text text-muted">
+                                RandomForest classifies your health risk. LightGBM predicts
+                                personalized nutrient targets. SHAP explains which biomarkers
+                                influence your results most.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Phase 3 -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-success bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width:64px;height:64px;">
+                                <i class="bi bi-robot fs-3"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Phase 3: Smart Recommendations</h5>
+                            <p class="card-text text-muted">
+                                Clinical rule engine filters critical values. Google Gemini AI
+                                generates a personalized diet plan, weekly meal plan, and
+                                lifestyle advice — all from validated data only.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biomarkers Tracked -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Biomarkers We Analyze</h2>
+            <div class="row g-3 justify-content-center">
+                {% set markers = [
+                    ("Hemoglobin", "bi-droplet-fill", "text-danger"),
+                    ("Glucose", "bi-graph-up", "text-primary"),
+                    ("HbA1c", "bi-pie-chart-fill", "text-warning"),
+                    ("LDL Cholesterol", "bi-shield-minus", "text-danger"),
+                    ("HDL Cholesterol", "bi-shield-plus", "text-success"),
+                    ("Total Cholesterol", "bi-bar-chart-fill", "text-info"),
+                    ("Triglycerides", "bi-lightning-fill", "text-warning"),
+                    ("Vitamin D", "bi-sun-fill", "text-warning"),
+                    ("Vitamin B12", "bi-capsule", "text-success"),
+                ] %}
+                {% for name, icon, color in markers %}
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card border-0 shadow-sm text-center p-3">
+                        <i class="bi {{ icon }} {{ color }} fs-2"></i>
+                        <p class="mb-0 mt-2 fw-semibold">{{ name }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Smart Nutrition Recommendation System &bull; AI-Powered Health Insights</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
